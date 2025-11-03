@@ -24,5 +24,18 @@ export default ts.config(
 	{
 		files: ['**/*.svelte'],
 		languageOptions: { parserOptions: { parser: ts.parser } }
+	},
+	{
+		rules: {
+			'svelte/no-navigation-without-resolve': 'off',
+			'@typescript-eslint/no-unused-vars': [
+				'error',
+				{
+					argsIgnorePattern: '^_',
+					varsIgnorePattern: '^_',
+					caughtErrorsIgnorePattern: '^_'
+				}
+			]
+		}
 	}
 );

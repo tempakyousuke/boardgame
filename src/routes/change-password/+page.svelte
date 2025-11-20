@@ -6,26 +6,26 @@
 </script>
 
 <div class="container">
-	<h1>Register</h1>
+	<h1>Change Password</h1>
 	<form method="post" use:enhance>
 		<label>
-			Username (Login ID)
-			<input name="username" required />
+			Current Password
+			<input type="password" name="currentPassword" required />
 		</label>
 		<label>
-			Display Name
-			<input name="displayName" required maxlength="50" />
+			New Password
+			<input type="password" name="newPassword" required minlength="6" />
 		</label>
 		<label>
-			Password
-			<input type="password" name="password" required />
+			Confirm New Password
+			<input type="password" name="confirmPassword" required minlength="6" />
 		</label>
-		<button>Register</button>
+		<button>Change Password</button>
 		{#if form?.message}
 			<p class="error">{form.message}</p>
 		{/if}
 	</form>
-	<p>Already have an account? <a href="/login">Login</a></p>
+	<p><a href="/">Back to Home</a></p>
 </div>
 
 <style>

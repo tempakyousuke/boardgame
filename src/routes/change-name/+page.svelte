@@ -1,31 +1,30 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import type { ActionData } from './$types';
+	import type { ActionData, PageData } from './$types';
 
-	let { form }: { form: ActionData } = $props();
+	let { form, data }: { form: ActionData; data: PageData } = $props();
 </script>
 
 <div class="container">
-	<h1>Register</h1>
+	<h1>Change Display Name</h1>
+	<p class="current-name">Current: {data.currentDisplayName}</p>
 	<form method="post" use:enhance>
 		<label>
-			Username (Login ID)
-			<input name="username" required />
+			New Display Name
+			<input
+				type="text"
+				name="displayName"
+				required
+				maxlength="50"
+				value={data.currentDisplayName}
+			/>
 		</label>
-		<label>
-			Display Name
-			<input name="displayName" required maxlength="50" />
-		</label>
-		<label>
-			Password
-			<input type="password" name="password" required />
-		</label>
-		<button>Register</button>
+		<button>Change Name</button>
 		{#if form?.message}
 			<p class="error">{form.message}</p>
 		{/if}
 	</form>
-	<p>Already have an account? <a href="/login">Login</a></p>
+	<p><a href="/">Back to Home</a></p>
 </div>
 
 <style>
@@ -35,6 +34,10 @@
 		align-items: center;
 		justify-content: center;
 		height: 100%;
+	}
+	.current-name {
+		color: #666;
+		margin-bottom: 1rem;
 	}
 	form {
 		display: flex;

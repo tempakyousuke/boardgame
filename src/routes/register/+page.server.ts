@@ -16,6 +16,7 @@ export const actions: Actions = {
 	default: async ({ request, cookies }) => {
 		const formData = await request.formData();
 		const username = formData.get('username');
+		const displayName = formData.get('displayName');
 		const password = formData.get('password');
 
 		if (
@@ -33,6 +34,11 @@ export const actions: Actions = {
 				message: 'Invalid password'
 			});
 		}
+		if (typeof displayName !== 'string' || displayName.length < 1 || displayName.length > 50) {
+			return fail(400, {
+				message: 'Display name must be between 1 and 50 characters'
+			});
+		}
 
 		const userId = crypto.randomUUID();
 		const passwordHash = await hash(password, {
@@ -47,7 +53,8 @@ export const actions: Actions = {
 			await db.insert(table.user).values({
 				id: userId,
 				username,
-				passwordHash
+				passwordHash,
+				displayName
 			});
 
 			const token = auth.generateSessionToken();

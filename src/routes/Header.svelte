@@ -6,6 +6,9 @@
 	<div class="corner"></div>
 	<div class="auth-corner">
 		{#if page.data.user}
+			<span class="user-greeting">Hello, {page.data.user.displayName}!</span>
+			<a href="/change-name">Change Name</a>
+			<a href="/change-password">Change Password</a>
 			<form action="/logout" method="post">
 				<button type="submit">Logout</button>
 			</form>
@@ -49,6 +52,11 @@
 	}
 
 	.auth-corner button:hover {
+		color: var(--color-theme-1);
+	}
+
+	.user-greeting {
+		font-weight: bold;
 		color: var(--color-theme-1);
 	}
 </style>

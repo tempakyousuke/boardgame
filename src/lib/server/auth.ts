@@ -1,4 +1,4 @@
-import type { RequestEvent } from '@sveltejs/kit';
+import type { RequestEvent, Cookies } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 import { sha256 } from '@oslojs/crypto/sha2';
 import { encodeBase64url, encodeHexLowerCase } from '@oslojs/encoding';
@@ -75,10 +75,10 @@ export async function invalidateSession(sessionId: string) {
 	await db.delete(table.session).where(eq(table.session.id, sessionId));
 }
 
-export function setSessionTokenCookie(event: RequestEvent, token: string, expiresAt: Date) {
-	event.cookies.set(sessionCookieName, token, { expires: expiresAt, path: '/' });
+export function setSessionTokenCookie(cookies: Cookies, token: string, expiresAt: Date) {
+	cookies.set(sessionCookieName, token, { expires: expiresAt, path: '/' });
 }
 
-export function deleteSessionTokenCookie(event: RequestEvent) {
-	event.cookies.delete(sessionCookieName, { path: '/' });
+export function deleteSessionTokenCookie(cookies: Cookies) {
+	cookies.delete(sessionCookieName, { path: '/' });
 }

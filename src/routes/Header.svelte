@@ -36,6 +36,17 @@
 			<img src={github} alt="GitHub" />
 		</a>
 	</div>
+
+	<div class="auth-corner">
+		{#if page.data.user}
+			<form action="/logout" method="post">
+				<button type="submit">Logout</button>
+			</form>
+		{:else}
+			<a href="/login">Login</a>
+			<a href="/register">Register</a>
+		{/if}
+	</div>
 </header>
 
 <style>
@@ -124,6 +135,27 @@
 	}
 
 	a:hover {
+		color: var(--color-theme-1);
+	}
+
+	.auth-corner {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 0 1rem;
+	}
+
+	.auth-corner button {
+		background: none;
+		border: none;
+		cursor: pointer;
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: bold;
+		color: var(--color-text);
+	}
+
+	.auth-corner button:hover {
 		color: var(--color-theme-1);
 	}
 </style>

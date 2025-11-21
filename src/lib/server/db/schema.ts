@@ -19,3 +19,25 @@ export const session = pgTable('session', {
 
 export type Session = typeof session.$inferSelect;
 export type User = typeof user.$inferSelect;
+
+export const tetsudoSquares = pgTable('tetsudo_squares', {
+	id: text('id').primaryKey(),
+	type: text('type').notNull(), // 'blue', 'red', 'property', 'card', 'start'
+	name: text('name'),
+	x: integer('x').notNull(),
+	y: integer('y').notNull(),
+	metadata: text('metadata')
+});
+
+export const tetsudoPaths = pgTable('tetsudo_paths', {
+	id: text('id').primaryKey(),
+	square1Id: text('square1_id')
+		.notNull()
+		.references(() => tetsudoSquares.id),
+	square2Id: text('square2_id')
+		.notNull()
+		.references(() => tetsudoSquares.id)
+});
+
+export type TetsudoSquare = typeof tetsudoSquares.$inferSelect;
+export type TetsudoPath = typeof tetsudoPaths.$inferSelect;

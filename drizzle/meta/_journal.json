@@ -15,6 +15,13 @@
       "when": 1763629492460,
       "tag": "0001_simple_goblin_queen",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1763743592301,
+      "tag": "0002_concerned_talon",
+      "breakpoints": true
     }
   ]
 }

@@ -39,5 +39,17 @@ export const tetsudoPaths = pgTable('tetsudo_paths', {
 		.references(() => tetsudoSquares.id)
 });
 
+export const tetsudoProperties = pgTable('tetsudo_properties', {
+	id: text('id').primaryKey(),
+	squareId: text('square_id')
+		.notNull()
+		.references(() => tetsudoSquares.id),
+	name: text('name').notNull(),
+	price: integer('price').notNull(),
+	profitRate: integer('profit_rate').notNull(),
+	type: text('type').notNull() // 'food', 'industry', etc.
+});
+
 export type TetsudoSquare = typeof tetsudoSquares.$inferSelect;
 export type TetsudoPath = typeof tetsudoPaths.$inferSelect;
+export type TetsudoProperty = typeof tetsudoProperties.$inferSelect;

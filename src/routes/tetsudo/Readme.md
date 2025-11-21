@@ -45,3 +45,8 @@
 - **テーブル命名規則**:
   本ゲームに関連する全てのデータベーステーブルには、プレフィックス `tetsudo_` を付与します。
   - 例: `tetsudo_rooms`, `tetsudo_players` など
+
+## データベースドキュメント
+
+- [tetsudo_rooms](./table_docs/tetsudo_rooms.md)
+- [tetsudo_players](./table_docs/tetsudo_players.md)

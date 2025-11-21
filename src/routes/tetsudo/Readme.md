@@ -50,3 +50,5 @@
 
 - [tetsudo_rooms](./table_docs/tetsudo_rooms.md)
 - [tetsudo_players](./table_docs/tetsudo_players.md)
+- [tetsudo_squares](./table_docs/tetsudo_squares.md)
+- [tetsudo_paths](./table_docs/tetsudo_paths.md)

@@ -52,3 +52,4 @@
 - [tetsudo_players](./table_docs/tetsudo_players.md)
 - [tetsudo_squares](./table_docs/tetsudo_squares.md)
 - [tetsudo_paths](./table_docs/tetsudo_paths.md)
+- [tetsudo_properties](./table_docs/tetsudo_properties.md)
